@@ -1,0 +1,16 @@
+<table>
+<tr>
+  <th>Class</th>
+  <th>Hit Die</th>
+  <th>Proficiencies</th>
+  <th>Saving Throw Proficiencies</th>
+</tr>
+
+<% @character_classes.each do |classes| %>
+  <tr>
+    <td><%= link_to classes.name, class_path(classes.id) %></td>
+    <td><%= classes.hit_die %></td>
+  </tr>
+<% end %>
+
+</table>
