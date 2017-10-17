@@ -1,12 +1,15 @@
 <% @abilities.each do |ability| %>
-  <h1><%= link_to ability.name, ability_path(ability.id) %> - </h1><p><%= ability.description %></p>
-  <br />
-  <h2>Associated skills</h2>
-  <% @skills.each do |skill| if skill.ability_id = params[:id] %>
-    <ul>
-      <li>
-        <%= skill.name %>
-      </li>
-    </ul>
+  <h1><%= link_to ability.name, ability_path(ability.id) %> - </h1>
+  <p><%= ability.description %></p>
+  <h3>Associated skills:</h3>
+  <ul>
+    <% ability.skills.each do |skill| %>
+      <% if skill.ability == 'Constitution' %>
+        <li>No associated skills</li>
+      <% else %>
+        <li><%= skill.name %></li>
+      <% end %>
+    <% end %>
+  </ul>
 
 <% end %>
