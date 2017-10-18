@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016171009) do
+ActiveRecord::Schema.define(version: 20171017203208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20171016171009) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "save_proficiencies", force: :cascade do |t|
+    t.bigint "character_class_id"
+    t.bigint "ability_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ability_id"], name: "index_save_proficiencies_on_ability_id"
+    t.index ["character_class_id"], name: "index_save_proficiencies_on_character_class_id"
+  end
+
   create_table "skills", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -38,5 +47,7 @@ ActiveRecord::Schema.define(version: 20171016171009) do
     t.index ["ability_id"], name: "index_skills_on_ability_id"
   end
 
+  add_foreign_key "save_proficiencies", "abilities"
+  add_foreign_key "save_proficiencies", "character_classes"
   add_foreign_key "skills", "abilities"
 end

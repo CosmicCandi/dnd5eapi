@@ -1,15 +1,5 @@
 <% @abilities.each do |ability| %>
   <h1><%= link_to ability.name, ability_path(ability.id) %> - </h1>
   <p><%= ability.description %></p>
-  <h3>Associated skills:</h3>
-  <ul>
-    <% ability.skills.each do |skill| %>
-      <% if skill.ability == 'Constitution' %>
-        <li>No associated skills</li>
-      <% else %>
-        <li><%= skill.name %></li>
-      <% end %>
-    <% end %>
-  </ul>
-
+  <%= render partial: 'skills/show', locals: { ability: ability } %>
 <% end %>
