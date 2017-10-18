@@ -6,11 +6,20 @@
   <th>Saving Throw Proficiencies</th>
 </tr>
 
-<% @character_classes.each do |classes| %>
+<% @character_classes.each do |char_class| %>
   <tr>
-    <td><%= link_to classes.name, class_path(classes.id) %></td>
-    <td><%= classes.hit_die %></td>
+    <td><%= link_to char_class.name, class_path(char_class.id) %></td>
+    <td><%= char_class.hit_die %></td>
+    <td><!-- placeholder for proficiencies --></td>
+    <% proficiencies = char_class.save_proficiencies.where(character_class_id: char_class.id) %>
+    <% @ability_name = [] %>
+    <% proficiencies.each do |ability| %>
+    <% @ability_name << Ability.find(ability.ability_id).name %>
+    <% end %>
+    <td><%= link_to @ability_name.first,
+            ability_path(Ability.find_by(name: @ability_name.first)) %>,
+        <%= link_to @ability_name.last,
+            ability_path(Ability.find_by(name: @ability_name.last)) %></td>
   </tr>
 <% end %>
-
 </table>

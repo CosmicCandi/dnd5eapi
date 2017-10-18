@@ -1,7 +1,7 @@
-<h1>
-  <%= @ability.name %>
-</h1>
-
-<p>
-  <%= @ability.description %>
-</p>
+<h1><%= @ability.name %></h1>
+<p><%= @ability.description %></p>
+<h3>Associated Skills:</h3>
+<ul>
+<% @ability.skills.each do |associated_skill| %>
+  <li><%= associated_skill.name %></li>
+<% end %>

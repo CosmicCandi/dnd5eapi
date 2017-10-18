@@ -1,11 +1,6 @@
 <h3>Associated skills:</h3>
   <ul>
-    <% @skills = Skill.where(ability_id: ability) %>
-      <% if @skills.length > 0 %>
-        <% @skills.each do |skill| %>
-          <li><%= skill.name %></li>
-        <%end %>
-      <% else %>
-          <li>No associated skills</li>
-      <% end %>
+    <% ability.skills.each do |skill| %>
+      <li><%= skill.name %></li>
+    <% end %>
   </ul>
