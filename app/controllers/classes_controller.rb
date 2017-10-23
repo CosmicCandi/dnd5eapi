@@ -6,12 +6,8 @@ class ClassesController < ApplicationController
   end
 
   def show
-    if params[:id]
-      @character_class = CharacterClass.find(params[:id])
-      if @character_class
-        render 'classes/_show', status: 200
-      end
-    end
+    @character_class = CharacterClass.find(params[:id]) if params[:id]
+    render 'classes/_show', status: 200 if @character_class
   end
 
   def create
