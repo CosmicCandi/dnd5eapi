@@ -2,7 +2,12 @@
 <tr>
   <th>Class</th>
   <th>Hit Die</th>
-  <th>Proficiencies</th>
+  <th>Hit Points at 1st</th>
+  <th>Hit Points after 1st</th>
+  <th>Armor</th>
+  <th>Weapon</th>
+  <th>Tool</th>
+  <th>Skill Proficiencies</th>
   <th>Saving Throw Proficiencies</th>
 </tr>
 
@@ -10,16 +15,18 @@
   <tr>
     <td><%= link_to char_class.name, class_path(char_class.id) %></td>
     <td><%= char_class.hit_die %></td>
-    <td><!-- placeholder for proficiencies --></td>
-    <% proficiencies = char_class.save_proficiencies.where(character_class_id: char_class.id) %>
-    <% @ability_name = [] %>
-    <% proficiencies.each do |ability| %>
-    <% @ability_name << Ability.find(ability.ability_id).name %>
-    <% end %>
-    <td><%= link_to @ability_name.first,
-            ability_path(Ability.find_by(name: @ability_name.first)) %>,
-        <%= link_to @ability_name.last,
-            ability_path(Ability.find_by(name: @ability_name.last)) %></td>
+    <td><%= char_class.hit_points_at_first %></td>
+    <td><%= char_class.hit_points_at_higher %></td>
+    <td><!-- Armor Proficiencies --></td>
+    <td><!-- Weapon Proficiencies --></td>
+    <td><!-- Tool Proficiencies --></td>
+    <td><strong>Choose <%= char_class.skill_amount%> from</strong>:
+      <%= char_class.skill_proficiencies.map { |prof| prof.skill.name }.join(", ") %>
+    </td>
+    <td><%= link_to char_class.save_proficiencies.first.ability.name,
+            ability_path(Ability.find(char_class.save_proficiencies.first.ability_id)) %>,
+        <%= link_to char_class.save_proficiencies.last.ability.name,
+            ability_path(Ability.find(char_class.save_proficiencies.last.ability_id)) %></td>
   </tr>
 <% end %>
 </table>
