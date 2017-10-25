@@ -1,0 +1,5 @@
+<% @armors.each do |a| %>
+ <ul>
+  <li><%= link_to(a.name, armor_path(a.id)) %></li>
+ </ul>
+<% end %>

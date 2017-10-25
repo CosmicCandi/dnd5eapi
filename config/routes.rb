@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :armors
   resources :skills
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -7,5 +6,9 @@ Rails.application.routes.draw do
 
   resources :classes
   resources :abilities
+  resources :armor_categories do
+    resources :armors, only: [:index, :create]
+  end
+  resources :armors, except: [:create, :new]
 
 end
