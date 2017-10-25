@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019231751) do
+ActiveRecord::Schema.define(version: 20171025181954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,36 @@ ActiveRecord::Schema.define(version: 20171019231751) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "armor_categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "armor_proficiencies", force: :cascade do |t|
+    t.bigint "armor_category_id"
+    t.bigint "character_class_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["armor_category_id"], name: "index_armor_proficiencies_on_armor_category_id"
+    t.index ["character_class_id"], name: "index_armor_proficiencies_on_character_class_id"
+  end
+
+  create_table "armors", force: :cascade do |t|
+    t.string "name"
+    t.string "cost"
+    t.string "armor_class"
+    t.integer "strength_requirement"
+    t.boolean "stealth"
+    t.string "weight"
+    t.string "don_time"
+    t.string "doff_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "armor_category_id"
+    t.index ["armor_category_id"], name: "index_armors_on_armor_category_id"
   end
 
   create_table "character_classes", force: :cascade do |t|
@@ -59,6 +89,9 @@ ActiveRecord::Schema.define(version: 20171019231751) do
     t.index ["ability_id"], name: "index_skills_on_ability_id"
   end
 
+  add_foreign_key "armor_proficiencies", "armor_categories"
+  add_foreign_key "armor_proficiencies", "character_classes"
+  add_foreign_key "armors", "armor_categories"
   add_foreign_key "save_proficiencies", "abilities"
   add_foreign_key "save_proficiencies", "character_classes"
   add_foreign_key "skill_proficiencies", "character_classes"

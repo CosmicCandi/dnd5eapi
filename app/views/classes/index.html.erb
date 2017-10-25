@@ -4,9 +4,9 @@
   <th>Hit Die</th>
   <th>Hit Points at 1st</th>
   <th>Hit Points after 1st</th>
-  <th>Armor</th>
-  <th>Weapon</th>
-  <th>Tool</th>
+  <th>Armor Proficiencies</th>
+  <th>Weapon Proficiencies</th>
+  <th>Tool Proficiencies</th>
   <th>Skill Proficiencies</th>
   <th>Saving Throw Proficiencies</th>
 </tr>
@@ -24,9 +24,9 @@
       <%= char_class.skill_proficiencies.map { |prof| prof.skill.name }.join(", ") %>
     </td>
     <td><%= link_to char_class.save_proficiencies.first.ability.name,
-            ability_path(Ability.find(char_class.save_proficiencies.first.ability_id)) %>,
+            ability_path(char_class.save_proficiencies.first.ability_id) %>,
         <%= link_to char_class.save_proficiencies.last.ability.name,
-            ability_path(Ability.find(char_class.save_proficiencies.last.ability_id)) %></td>
+            ability_path(char_class.save_proficiencies.last.ability_id) %></td>
   </tr>
 <% end %>
 </table>
