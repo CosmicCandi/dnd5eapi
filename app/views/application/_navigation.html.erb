@@ -1,8 +1,13 @@
-<div>
-  <img src="http://via.placeholder.com/150x150/FF0000/000000?text=I'm+a+dragon!+Rawr!" alt="D&D Ampersand Logo Placeholder"/>
-  <h1>D&D 5e SRD</h1><br />
-    <%= link_to "Classes", classes_path %> |
-    <%= link_to "Abilities", abilities_path %> |
-    <%= link_to "Skills", skills_path %> |
-    Spells
+<div class="navigation">
+  <img id="dragon-logo" src="http://via.placeholder.com/150x150/FF0000/000000?text=I'm+a+dragon!+Rawr!" alt="D&D Ampersand Logo Placeholder"/>
+
+  <div class="nav-grouping">
+    <h1 id="title-header">D&D 5e SRD</h1>
+    <div id="link-list">
+      <%= link_to "Classes", classes_path %> |
+      <%= link_to "Abilities", abilities_path %> |
+      <%= link_to "Skills", skills_path %> |
+      Spells
+    </div>
+  </div>
 </div>
