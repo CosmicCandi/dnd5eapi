@@ -4,9 +4,9 @@
   <th>Hit Die</th>
   <th>Hit Points at 1st</th>
   <th>Hit Points after 1st</th>
-  <th>Armor</th>
-  <th>Weapon</th>
-  <th>Tool</th>
+  <th>Armor Proficiencies</th>
+  <th>Weapon Proficiencies</th>
+  <th>Tool Proficiencies</th>
   <th>Skill Proficiencies</th>
   <th>Saving Throw Proficiencies</th>
 </tr>
@@ -17,16 +17,21 @@
     <td><%= char_class.hit_die %></td>
     <td><%= char_class.hit_points_at_first %></td>
     <td><%= char_class.hit_points_at_higher %></td>
-    <td><!-- Armor Proficiencies --></td>
+    <td><%= raw(char_class.armor_proficiencies.map{ |ar_prof|
+            raw(link_to(ar_prof.armor_category.name, armor_category_armors_path(ar_prof.armor_category.id)))}
+            .join(", ")) %>
+    </td>
     <td><!-- Weapon Proficiencies --></td>
     <td><!-- Tool Proficiencies --></td>
     <td><strong>Choose <%= char_class.skill_amount%> from</strong>:
-      <%= char_class.skill_proficiencies.map { |prof| prof.skill.name }.join(", ") %>
+      <%= char_class.skill_proficiencies.map { |sk_prof| sk_prof.skill.name }.join(", ") %>
     </td>
     <td><%= link_to char_class.save_proficiencies.first.ability.name,
-            ability_path(Ability.find(char_class.save_proficiencies.first.ability_id)) %>,
+            ability_path(char_class.save_proficiencies.first.ability_id) %>,
         <%= link_to char_class.save_proficiencies.last.ability.name,
-            ability_path(Ability.find(char_class.save_proficiencies.last.ability_id)) %></td>
+            ability_path(char_class.save_proficiencies.last.ability_id) %></td>
   </tr>
+</h2>
 <% end %>
 </table>
+

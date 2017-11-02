@@ -1,6 +1,9 @@
 class CharacterClass < ApplicationRecord
   require 'pry'
 
+  has_many :armor_proficiencies
+  has_many :armor_categories, through: :armor_proficiencies
+
   has_many :save_proficiencies
   has_many :abilities, through: :save_proficiencies
 

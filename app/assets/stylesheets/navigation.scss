@@ -1,14 +1,24 @@
-img {
-  display: inline;
+// * {
+//   border: 1px solid blue;
+// }
+
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  align-items: center;
 }
 
 h1 {
-  display: inline;
-  padding: 0px;
-  margin-bottom: 80px;
+  margin-bottom: 2px;
+  padding-left: 15px;
 }
 
-.navbar {
-  display: inline;
-  padding-top: 5px;
+#link-list {
+  padding-left: 15px;
+  padding-top: 0;
+  display: flex;
+  order: 1;
+  align-content: center;
+  align-items: center;
 }
