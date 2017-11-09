@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20171102045720) do
 
   create_table "character_classes", force: :cascade do |t|
     t.string "name"
-    t.string "hit_die", limit: 3
+    t.string "hit_die", limit: 4
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "hit_points_at_first"
@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 20171102045720) do
   create_table "weapons", force: :cascade do |t|
     t.string "name"
     t.string "cost"
-    t.string "damage_dice", limit: 3
+    t.string "damage_dice", limit: 4
     t.integer "damage_type_id"
     t.bigint "weapon_category_id"
     t.string "weight"

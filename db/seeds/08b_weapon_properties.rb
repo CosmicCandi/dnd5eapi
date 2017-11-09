@@ -82,6 +82,49 @@ def set_weapon_properties(weapon, properties)
   end
 end
 
+# Simple Melee Properties
 set_weapon_properties('Club', [@light])
 set_weapon_properties('Dagger', [@finesse, @light, @thrown])
+set_weapon_properties('Greatclub', [@two_handed])
+set_weapon_properties('Handaxe', [@light, @thrown])
+set_weapon_properties('Javelin', [@thrown])
+set_weapon_properties('Light Hammer', [@light, @thrown])
+# Mace has no properties
+set_weapon_properties('Quarterstaff', [@versatile])
+set_weapon_properties('Sickle', [@light])
+set_weapon_properties('Spear', [@thrown, @versatile])
+
+# Simple Ranged Properties
+set_weapon_properties('Crossbow, light', [@ammunition, @loading, @two_handed])
+set_weapon_properties('Dart', [@finesse, @thrown] )
+set_weapon_properties('Shortbow', [@ammunition, two_handed])
+set_weapon_properties('Sling', [@ammunition])
+
+# Martial Melee Properties
+set_weapon_properties('Battleaxe', [@versatile])
+# Flail has no properties
+set_weapon_properties('Glaive', [@heavy, @reach, two_handed])
+set_weapon_properties('Greataxe', [@heavy, @two_handed])
+set_weapon_properties('Greatsword', [@heavy, @two_handed])
+set_weapon_properties('Halberd', [@heavy, @reach, @two_handed])
+set_weapon_properties('Lance', [@reach, @special])
+set_weapon_properties('Longsword', [@versatile])
+set_weapon_properties('Maul', [@heavy, @two_handed])
+# Morningstar has no properties
+set_weapon_properties('Pike', [@heavy, @reach, @two_handed])
+set_weapon_properties('Rapier', [@finesse])
+set_weapon_properties('Scimitar', [@finesse, @light])
+set_weapon_properties('Shortsword', [@finesse, @light])
+set_weapon_properties('Trident', [@thrown, @versatile])
+# War pick has no properties
+set_weapon_properties('Warhammer', [@versatile])
+set_weapon_properties('Whip', [@finesse, @reach])
+
+# Martial Ranged
+set_weapon_properties('Blowgun', [@ammunition, @loading])
+set_weapon_properties('Crossbow, hand', [@ammunition, @light, @loading])
+set_weapon_properties('Crossbow, heavy', [@ammunition, @heavy, @loading,
+                                          @two_handed])
+set_weapon_properties('Longbow', [@ammunition, @heavy, @two_handed])
+set_weapon_properties('Net', [@special, @thrown])
 
